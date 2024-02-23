@@ -12,6 +12,8 @@ export default async function getDeviceInfo(hostId : string) {
     system: '*',
     versions: '*'
   }
+  si.networkInterfaces().then(data => console.log(data));
+
   const systemInfo = await si.get(valueObject);
   try {
     deviceInfo.ip = osu.os.ip();
