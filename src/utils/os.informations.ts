@@ -18,7 +18,6 @@ export default async function getDeviceInfo(hostId : string) {
     await si.networkInterfaces('default').then((data: NetworkInterfacesData) => {
       deviceInfo.ip = data.ip4
     });
-    deviceInfo.ip = osu.os.ip();
     deviceInfo.uptime = osu.os.uptime();
     deviceInfo.fqdn = systemInfo.osInfo.fqdn;
     deviceInfo.hostname = systemInfo.osInfo.hostname;
