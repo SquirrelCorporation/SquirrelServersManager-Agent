@@ -20,7 +20,7 @@ pm2 --version | grep "v" &> /dev/null
 if [ $? == 0 ]; then
  echo "Node Installed"
 else
- npm install pm2 -g
+ sudo npm install pm2 -g
 fi
 echo "##### Run"
 pm2 stop agent
