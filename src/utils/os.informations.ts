@@ -1,4 +1,4 @@
-import si, {NetworkInterfacesData} from 'systeminformation';
+import si, {networkInterfaces} from 'systeminformation';
 import osu from 'node-os-utils';
 import logger from "../logger";
 import {version} from '../../package.json';
@@ -15,8 +15,8 @@ export default async function getDeviceInfo(hostId : string) {
 
   const systemInfo = await si.get(valueObject);
   try {
-    await si.networkInterfaces('default').then((data: NetworkInterfacesData) => {
-      deviceInfo.ip = data.ip4
+    await si.networkInterfaces('default').then((data: si.Systeminformation.NetworkInterfacesData | si.Systeminformation.NetworkInterfacesData[]) => {
+      deviceInfo.ip = (data as si.Systeminformation.NetworkInterfacesData).ip4
     });
     deviceInfo.uptime = osu.os.uptime();
     deviceInfo.fqdn = systemInfo.osInfo.fqdn;

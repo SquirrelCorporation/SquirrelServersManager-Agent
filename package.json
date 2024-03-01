@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon",
-    "start": "npm run build && cross-env-shell NODE_ENV=production node build/src/index.js ",
+    "start": "npm run build && cross-env-shell NODE_ENV=production node build/agent.js ",
     "build": "esbuild ./src/index.ts --bundle --platform=node --outfile=build/agent.js",
     "build-ncc": "ncc build  -o build/lib ./src/index.ts && pkg ./build/lib/index.js -t 'node18-macos-arm64' -o ./build/agent",
     "build-bun": "bun build ./src/index.ts --compile --outfile agentcli"
@@ -35,5 +35,8 @@
     "@types/dotenv": "^8.2.0",
     "@types/node-os-utils": "^1.3.4",
     "@types/retry": "^0.12.5"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }

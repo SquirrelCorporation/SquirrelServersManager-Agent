@@ -2,9 +2,9 @@
 
 node --version | grep "v" &> /dev/null
 if [ $? == 0 ]; then
- echo "Node Installed"
+ echo "Node is installed"
 else
- echo "Error - Node not installed"
+ echo "Error - Node not installed, install NodeJS (20) and NPM first"
  exit 1;
 fi
 echo "##### Clean"
@@ -18,7 +18,7 @@ npm run build
 echo "##### Install PM2"
 pm2 --version | grep "v" &> /dev/null
 if [ $? == 0 ]; then
- echo "Node Installed"
+ echo "PM2 is installed"
 else
  sudo npm install pm2 -g
 fi
@@ -28,9 +28,9 @@ pm2 delete agent
 pm2 start -f build/agent.js
 eval "$(command pm2 startup | grep startup)"
 if [ $? == 0 ]; then
- echo "Startup Installed"
+ echo "pm2 startup installed"
 else
- echo "Error - Not installed"
+ echo "Error - pm2 startup not installed"
  exit 1;
 fi
 pm2 save
