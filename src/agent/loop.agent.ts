@@ -1,6 +1,6 @@
 import sendDeviceInfoToApi from "../api/device.info";
 import logger from "../logger";
-
+import {EVERY} from '../config'
 let numAttempt = 0
 
 const agentLoop = async (hostId: string) => {
@@ -15,6 +15,6 @@ const agentLoop = async (hostId: string) => {
     }
      setTimeout(() => {
       agentLoop(hostId);
-    }, 30000);
+    }, EVERY * 1000);
 }
 export default agentLoop;
