@@ -23,7 +23,7 @@ for arg in "$@"; do
   case "$arg" in
     '--url')   set -- "$@" '-u'   ;;
     '--reset') set -- "$@" '-r'   ;;
-    '--s')   set -- "$@" '-set'   ;;
+    '--set')   set -- "$@" '-s'   ;;
     *)          set -- "$@" "$arg" ;;
   esac
 done
@@ -38,7 +38,7 @@ do
         RESET=true
         ;;
       s)
-        SET=true
+        SET="$2"
         ;;
       *)
         usage
