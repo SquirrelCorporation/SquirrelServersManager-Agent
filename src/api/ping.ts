@@ -1,5 +1,5 @@
 import axios, {AxiosError} from "axios";
-import URL_MASTER from "../config";
+import { URL_MASTER } from '../config';
 import logger from "../logger";
 
 const pingApi = async () => {

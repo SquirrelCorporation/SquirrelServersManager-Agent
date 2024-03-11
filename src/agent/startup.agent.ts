@@ -1,4 +1,4 @@
-import URL_MASTER from "../config";
+import { URL_MASTER } from '../config';
 import pingApi from "../api/ping";
 import retrieveOrRegisterDevice from "../api/register.device";
 import agentLoop from "./loop.agent";

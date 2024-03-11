@@ -1,6 +1,6 @@
 import getDeviceInfo from "../utils/os.informations";
 import axios, {AxiosError} from "axios";
-import URL_MASTER from "../config";
+import { URL_MASTER } from '../config';
 import logger from "../logger";
 
 const sendDeviceInfoToApi = async (hostId: string) => {

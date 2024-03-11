@@ -1,6 +1,6 @@
 import fs from "fs";
 import axios from "axios";
-import URL_MASTER from "../config";
+import { URL_MASTER } from '../config';
 import logger from "../logger";
 import osu from "node-os-utils";
 
