@@ -131,4 +131,5 @@ if [ "${INSTALL_AGENT}" = true ]; then
     fi
   echo "##### Finished with success"
 fi;
+pm2 update
 exit 0;
