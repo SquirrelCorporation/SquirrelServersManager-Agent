@@ -97,7 +97,7 @@ pm2 --version | grep "v" &> /dev/null
 if [ $? == 0 ]; then
  echo "PM2 is installed"
 else
- sudo npm install pm2 -g
+ sudo npm install pm2@latest -g
 fi
 
 # RUN WITH PM2
