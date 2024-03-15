@@ -32,7 +32,7 @@ for arg in "$@"; do
   esac
 done
 
-while getopts "u:rs:" OPTION
+while getopts "ua:rs:" OPTION
 do
    case $OPTION in
       u)
