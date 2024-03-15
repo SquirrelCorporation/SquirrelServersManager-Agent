@@ -119,9 +119,10 @@ if [ "${INSTALL_AGENT}" = true ]; then
   echo "##### Start agent..."
   # START AGENT
   pm2 start -f ./build/agent.js
-  SUB="$(/usr/local/bin/pm2 startup | grep startup)"
+  SUB="$(/usr/local/bin/pm2 startup)"
   echo "RESULT --> $SUB"
-  eval "$SUB"
+  CMD="$(echo $SUB | grep startup)"
+  eval "$CMD"
   if [ $? == 0 ]; then
    echo "pm2 startup installed"
   else
