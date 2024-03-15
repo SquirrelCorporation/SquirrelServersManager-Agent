@@ -15,6 +15,7 @@ Usage: $0
    [ -u | --url MASTER_NODE_URL]
    [ -r | --reset ]
    [ -s | --set]
+   [ -a | --agent]
 EOF
 exit 1
 }
@@ -26,7 +27,8 @@ for arg in "$@"; do
     '--url')   set -- "$@" '-u'   ;;
     '--reset') set -- "$@" '-r'   ;;
     '--set')   set -- "$@" '-s'   ;;
-    *)          set -- "$@" "$arg" ;;
+    '--agent') set -- "$@" '-a'   ;;
+    *)         set -- "$@" "$arg" ;;
   esac
 done
 
@@ -41,6 +43,9 @@ do
         ;;
       s)
         SET="$2"
+        ;;
+      a)
+        INSTALL_AGENT=true
         ;;
       *)
         usage
@@ -99,23 +104,23 @@ pm2 delete agent || true
 if [ -z "${RESET}" ]; then
   echo "##### Removing hostId.txt file"
   rm -f ./hostid.txt
- exit 1
 fi;
 if [ -z "${SET}" ]; then
     echo "##### Setting hostId.txt file"
   echo "$SET" > hostid.txt
- exit 1
 fi;
 
-echo "##### Start agent..."
-# START AGENT
-pm2 start -f build/agent.js
-eval "$(command pm2 startup | grep startup)"
-if [ $? == 0 ]; then
- echo "pm2 startup installed"
-else
- echo "Error - pm2 startup not installed"
- exit 1;
-fi
-pm2 save
-echo "##### Finished with success"
+if [ -z "${INSTALL_AGENT}" ]; then
+  echo "##### Start agent..."
+  # START AGENT
+  pm2 start -f build/agent.js
+  eval "$(command pm2 startup | grep startup)"
+  if [ $? == 0 ]; then
+   echo "pm2 startup installed"
+  else
+   echo "Error - pm2 startup not installed"
+   exit 1;
+  fi
+  pm2 save
+  echo "##### Finished with success"
+fi;
