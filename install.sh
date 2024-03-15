@@ -118,7 +118,7 @@ fi;
 if [ "${INSTALL_AGENT}" = true ]; then
   echo "##### Start agent..."
   # START AGENT
-  pm2 start -f ./build/agent.js
+  pm2 start -f "$SSM_WORKDIR"/build/agent.js
   echo "##### PM2 startup..."
   pm2 startup
   echo "##### PM2 save..."
