@@ -7,8 +7,6 @@ echo "
 #### SQUIRREL SERVERS MANAGER AGENT ####
 ########################################
 "
-SCRIPT_PATH=$(dirname $0)
-cd "$SCRIPT_PATH" || exit 1
 usage(){
 >&2 cat << EOF
 Usage: $0
@@ -71,7 +69,7 @@ if [ -z "${MASTER_NODE_URL}" ]; then
   echo "Error: master node url required"
  exit 1
 else
-   echo "MASTER_NODE_URL=${MASTER_NODE_URL}" > ./.env
+   echo "API_URL_MASTER=${MASTER_NODE_URL}" > ./.env
 fi;
 
 # CHECK NODE VERSION
@@ -121,7 +119,7 @@ if [ "${INSTALL_AGENT}" = true ]; then
   echo "##### Start agent..."
   # START AGENT
   pm2 start -f ./build/agent.js
-  SUB="$(pm2 /usr/local/bin/pm2 | grep startup)"
+  SUB="$(pm2 startup | grep startup)"
   echo "$SUB"
   eval "$SUB"
   if [ $? == 0 ]; then
