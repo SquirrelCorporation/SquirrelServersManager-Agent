@@ -7,6 +7,8 @@ echo "
 #### SQUIRREL SERVERS MANAGER AGENT ####
 ########################################
 "
+SCRIPT_PATH=$(dirname $0)
+cd "$SCRIPT_PATH" || exit 1
 usage(){
 >&2 cat << EOF
 Usage: $0
