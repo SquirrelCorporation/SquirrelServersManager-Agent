@@ -8,7 +8,7 @@ const transport = new winston.transports.DailyRotateFile({
   zippedArchive: true,
   maxSize: '20m',
   maxFiles: '14d',
-  dirname: __dirname + './logs'
+  dirname: __dirname + './agent-logs'
 });
 
 const logger = winston.createLogger({
