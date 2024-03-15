@@ -16,6 +16,7 @@ Usage: $0
    [ -r | --reset ]
    [ -s | --set]
    [ -a | --agent]
+   [ -i | --interactive]
 EOF
 exit 1
 }
@@ -28,11 +29,12 @@ for arg in "$@"; do
     '--reset') set -- "$@" '-r'   ;;
     '--set')   set -- "$@" '-s'   ;;
     '--agent') set -- "$@" '-a'   ;;
+    '--interactive') set -- "$@" '-i'   ;;
     *)         set -- "$@" "$arg" ;;
   esac
 done
 
-while getopts "ars:u:" OPTION
+while getopts "aris:u:" OPTION
 do
    case $OPTION in
       u)
@@ -47,6 +49,9 @@ do
       a)
         INSTALL_AGENT=true
         ;;
+      i)
+        INTERACTIVE=true
+        ;;
       *)
         usage
         ;;
@@ -55,7 +60,9 @@ done
 
 # CHECK MASTER NODE URL
 if [ -z "${MASTER_NODE_URL}" ]; then
- read -p "Enter master node url: "  MASTER_NODE_URL
+  if [ "${INTERACTIVE}" = true ]; then
+    read -p "Enter master node url: "  MASTER_NODE_URL
+  fi;
 else
    echo "Master node set to ${MASTER_NODE_URL}"
 fi;
