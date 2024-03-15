@@ -120,7 +120,7 @@ fi;
 if [ "${INSTALL_AGENT}" = true ]; then
   echo "##### Start agent..."
   # START AGENT
-  eval "$(command pm2 start -s -f build/agent.js 1> /dev/null)"
+  eval "$(command pm2 start -s -f ./build/agent.js 1> /dev/null)"
   eval "$(command pm2 startup | grep startup)"
   if [ $? == 0 ]; then
    echo "pm2 startup installed"
