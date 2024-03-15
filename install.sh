@@ -92,8 +92,8 @@ fi
 
 # RUN WITH PM2
 echo "##### Run"
-pm2 stop agent
-pm2 delete agent
+pm2 stop agent || true
+pm2 delete agent || true
 
 # RESET OR SET HOSTID IF NEEDED
 if [ -z "${RESET}" ]; then
