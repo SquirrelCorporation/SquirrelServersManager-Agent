@@ -32,7 +32,7 @@ for arg in "$@"; do
   esac
 done
 
-while getopts "ua:rs:" OPTION
+while getopts "ars:u:" OPTION
 do
    case $OPTION in
       u)
@@ -122,5 +122,11 @@ if [ -z "${INSTALL_AGENT}" ]; then
    exit 1;
   fi
   eval "$(command pm2 -s save)"
+   if [ $? == 0 ]; then
+     echo "pm2 save"
+    else
+     echo "Error - pm2 save failed"
+     exit 1;
+    fi
   echo "##### Finished with success"
 fi;
