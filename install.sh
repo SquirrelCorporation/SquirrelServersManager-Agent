@@ -128,7 +128,7 @@ if [ "${INSTALL_AGENT}" = true ]; then
    echo "Error - pm2 startup not installed"
    exit 1;
   fi
-  pm2 -s save
+  pm2 save
    if [ $? == 0 ]; then
      echo "pm2 save"
     else
