@@ -119,7 +119,9 @@ if [ "${INSTALL_AGENT}" = true ]; then
   echo "##### Start agent..."
   # START AGENT
   pm2 start -f ./build/agent.js
+  echo "##### PM2 startup..."
   pm2 startup
+  echo "##### PM2 save..."
   pm2 save
    if [ $? == 0 ]; then
      echo "pm2 save"
