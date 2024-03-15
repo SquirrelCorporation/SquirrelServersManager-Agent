@@ -121,6 +121,6 @@ if [ -z "${INSTALL_AGENT}" ]; then
    echo "Error - pm2 startup not installed"
    exit 1;
   fi
-  pm2 save
+  pm2 -s save
   echo "##### Finished with success"
 fi;
