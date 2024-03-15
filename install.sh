@@ -113,7 +113,7 @@ fi;
 if [ -z "${INSTALL_AGENT}" ]; then
   echo "##### Start agent..."
   # START AGENT
-  pm2 start -s -f build/agent.js
+  eval "$(command pm2 start -s -f build/agent.js 1> /dev/null)"
   eval "$(command pm2 startup | grep startup)"
   if [ $? == 0 ]; then
    echo "pm2 startup installed"
@@ -121,6 +121,6 @@ if [ -z "${INSTALL_AGENT}" ]; then
    echo "Error - pm2 startup not installed"
    exit 1;
   fi
-  pm2 -s save
+  eval "$(command pm2 -s save)"
   echo "##### Finished with success"
 fi;
