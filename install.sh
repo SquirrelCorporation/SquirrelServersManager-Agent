@@ -91,20 +91,23 @@ else
 fi
 
 # RUN WITH PM2
-echo "##### Run"
+echo "##### Clean PM2"
 pm2 stop agent || true
 pm2 delete agent || true
 
 # RESET OR SET HOSTID IF NEEDED
 if [ -z "${RESET}" ]; then
+  echo "##### Removing hostId.txt file"
   rm -f ./hostid.txt
  exit 1
 fi;
 if [ -z "${SET}" ]; then
+    echo "##### Setting hostId.txt file"
   echo "$SET" > hostid.txt
  exit 1
 fi;
 
+echo "##### Start agent..."
 # START AGENT
 pm2 start -f build/agent.js
 eval "$(command pm2 startup | grep startup)"
@@ -115,3 +118,4 @@ else
  exit 1;
 fi
 pm2 save
+echo "##### Finished with success"
