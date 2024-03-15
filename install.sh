@@ -117,7 +117,7 @@ if [ -z "${SET}" ]; then
   echo "$SET" > hostid.txt
 fi;
 
-if [ -z "${INSTALL_AGENT}" ]; then
+if [ "${INSTALL_AGENT}" = true ]; then
   echo "##### Start agent..."
   # START AGENT
   eval "$(command pm2 start -s -f build/agent.js 1> /dev/null)"
@@ -137,3 +137,4 @@ if [ -z "${INSTALL_AGENT}" ]; then
     fi
   echo "##### Finished with success"
 fi;
+exit 0;
