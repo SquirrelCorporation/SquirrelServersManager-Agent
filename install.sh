@@ -36,13 +36,13 @@ while getopts "ars:u:" OPTION
 do
    case $OPTION in
       u)
-        MASTER_NODE_URL="$2"
+        MASTER_NODE_URL="$OPTARG"
         ;;
       r)
         RESET=true
         ;;
       s)
-        SET="$2"
+        SET="$OPTARG"
         ;;
       a)
         INSTALL_AGENT=true
