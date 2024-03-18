@@ -2,10 +2,10 @@ import { URL_MASTER } from '../config';
 import pingApi from "../api/ping";
 import retrieveOrRegisterDevice from "../api/register.device";
 import agentLoop from "./loop.agent";
-import logger from "../logger";
+import logger, { LOG_DIRECTORY } from '../logger';
 
 const startAgent = async () => {
-
+  logger.info(`[AGENT] startAgent - Logs in ${LOG_DIRECTORY}`)
   if (!URL_MASTER) {
     logger.error("[AGENT] startAgent - No URL_MASTER env");
     throw new Error("[AGENT] startAgent - NO URL_MASTER env")
