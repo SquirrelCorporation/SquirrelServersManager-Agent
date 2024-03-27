@@ -1,9 +1,11 @@
+import cron from 'node-cron';
 import sendDeviceInfoToApi from "../api/device.info";
 import logger from "../logger";
-import {EVERY} from '../config'
+import { STATISTICS_CRON_EXPRESSION } from '../config';
 let numAttempt = 0
 
 const agentLoop = async (hostId: string) => {
+  const task = cron.schedule(STATISTICS_CRON_EXPRESSION, async () => {
     logger.info(`[AGENT] [LOOP] - Sending info to master node...`);
     if (numAttempt !== 0) logger.info('[AGENT] Loop - Attempt #:' + numAttempt);
     try {
@@ -11,10 +13,9 @@ const agentLoop = async (hostId: string) => {
       numAttempt = 0;
     } catch (error: any) {
       logger.error(error)
-        numAttempt++
+      numAttempt++
     }
-     setTimeout(() => {
-      agentLoop(hostId);
-    }, EVERY * 1000);
+  });
+  task.start();
 }
 export default agentLoop;
