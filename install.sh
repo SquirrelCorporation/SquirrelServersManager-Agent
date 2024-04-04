@@ -37,7 +37,7 @@ while getopts "aris:u:" OPTION
 do
    case $OPTION in
       u)
-        API_URL_MASTER="$OPTARG"
+        MASTER_NODE_URL="$OPTARG"
         ;;
       r)
         RESET=true
