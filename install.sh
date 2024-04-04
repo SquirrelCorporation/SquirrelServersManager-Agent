@@ -18,7 +18,7 @@ Usage: $0
 EOF
 exit 1
 }
-cd SSM_WORKDIR || exit 1
+cd $SSM_WORKDIR || exit 1
 
 # READ CLI ARGS
 for arg in "$@"; do
