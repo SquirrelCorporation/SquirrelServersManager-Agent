@@ -18,6 +18,7 @@ Usage: $0
 EOF
 exit 1
 }
+cd SSM_WORKDIR || exit 1
 
 # READ CLI ARGS
 for arg in "$@"; do
@@ -36,7 +37,7 @@ while getopts "aris:u:" OPTION
 do
    case $OPTION in
       u)
-        MASTER_NODE_URL="$OPTARG"
+        API_URL_MASTER="$OPTARG"
         ;;
       r)
         RESET=true
@@ -69,7 +70,8 @@ if [ -z "${MASTER_NODE_URL}" ]; then
   echo "Error: master node url required"
  exit 1
 else
-   echo "API_URL_MASTER=${MASTER_NODE_URL}" > ./.env
+   rm -f ./.env
+   echo "API_URL_MASTER=${API_URL_MASTER}" > ./.env
 fi;
 
 # CHECK NODE VERSION
