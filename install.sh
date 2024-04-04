@@ -68,11 +68,13 @@ else
    echo "Master node set to ${MASTER_NODE_URL}"
 fi;
 
+echo "Checking master node url"
 if [ -z "${MASTER_NODE_URL}" ]; then
   echo "Error: master node url required"
  exit 1
 else
    rm -f ./.env
+   echo "Master node set to ${MASTER_NODE_URL} write in env file"
    echo "API_URL_MASTER=${MASTER_NODE_URL}" > ./.env
 fi;
 
@@ -110,11 +112,14 @@ echo "##### Clean PM2"
 pm2 stop agent || true
 pm2 delete agent || true
 
+echo "Checking need reset"
 # RESET OR SET HOSTID IF NEEDED
 if [ "${RESET}" = true ]; then
   echo "##### Removing hostId.txt file"
   rm -f ./hostid.txt
 fi;
+
+echo "Checking hostid"
 if [ -z "${HOST_ID}" ]; then
   echo "##### Setting hostId.txt file"
   rm -f ./hostid.txt
