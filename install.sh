@@ -71,7 +71,7 @@ if [ -z "${MASTER_NODE_URL}" ]; then
  exit 1
 else
    rm -f ./.env
-   echo "API_URL_MASTER=${API_URL_MASTER}" > ./.env
+   echo "API_URL_MASTER=${MASTER_NODE_URL}" > ./.env
 fi;
 
 # CHECK NODE VERSION
