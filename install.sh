@@ -115,7 +115,7 @@ if [ -z "${RESET}" ]; then
 fi;
 if [ -z "${SET}" ]; then
     echo "##### Setting hostId.txt file"
-  echo "$SET" > hostid.txt
+  echo "$SET" > ./hostid.txt
 fi;
 
 if [ "${INSTALL_AGENT}" = true ]; then
