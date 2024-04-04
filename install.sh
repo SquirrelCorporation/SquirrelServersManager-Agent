@@ -35,6 +35,7 @@ done
 RESET=false
 INTERACTIVE=false
 INSTALL_AGENT=false
+HOST_ID=false
 while getopts "aris:u:" OPTION
 do
    case $OPTION in
@@ -120,7 +121,9 @@ if [ "${RESET}" = true ]; then
 fi;
 
 echo "Checking hostid"
-if [ -z "${HOST_ID}" ]; then
+if [ "${HOST_ID}" = false ]; then
+  echo "##### Host id not set"
+else
   echo "##### Setting hostId.txt file"
   rm -f ./hostid.txt
   echo "$HOST_ID" > ./hostid.txt
