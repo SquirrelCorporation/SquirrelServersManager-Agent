@@ -98,6 +98,7 @@ if [ $? == 0 ]; then
  echo "PM2 is installed"
 else
  sudo npm install pm2@latest -g
+ pm2 install pm2-logrotate
 fi
 
 # RUN WITH PM2
