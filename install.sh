@@ -32,7 +32,9 @@ for arg in "$@"; do
     *)         set -- "$@" "$arg" ;;
   esac
 done
-
+RESET=false
+INTERACTIVE=false
+INSTALL_AGENT=false
 while getopts "aris:u:" OPTION
 do
    case $OPTION in
