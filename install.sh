@@ -111,7 +111,7 @@ pm2 stop agent || true
 pm2 delete agent || true
 
 # RESET OR SET HOSTID IF NEEDED
-if [ -z "${RESET}" ]; then
+if [ "${RESET}" = true ]; then
   echo "##### Removing hostId.txt file"
   rm -f ./hostid.txt
 fi;
