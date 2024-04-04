@@ -45,7 +45,7 @@ do
         RESET=true
         ;;
       s)
-        SET="$OPTARG"
+        HOST_ID="$OPTARG"
         ;;
       a)
         INSTALL_AGENT=true
@@ -58,7 +58,7 @@ do
         ;;
    esac
 done
-echo "Host id is ${SET}"
+echo "Host id is ${HOST_ID}"
 # CHECK MASTER NODE URL
 if [ -z "${MASTER_NODE_URL}" ]; then
   if [ "${INTERACTIVE}" = true ]; then
@@ -115,10 +115,10 @@ if [ "${RESET}" = true ]; then
   echo "##### Removing hostId.txt file"
   rm -f ./hostid.txt
 fi;
-if [ -z "${SET}" ]; then
+if [ -z "${HOST_ID}" ]; then
   echo "##### Setting hostId.txt file"
   rm -f ./hostid.txt
-  echo "$SET" > ./hostid.txt
+  echo "$HOST_ID" > ./hostid.txt
 fi;
 
 if [ "${INSTALL_AGENT}" = true ]; then
