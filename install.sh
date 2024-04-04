@@ -56,7 +56,7 @@ do
         ;;
    esac
 done
-
+echo "Host id is ${SET}"
 # CHECK MASTER NODE URL
 if [ -z "${MASTER_NODE_URL}" ]; then
   if [ "${INTERACTIVE}" = true ]; then
@@ -114,7 +114,8 @@ if [ -z "${RESET}" ]; then
   rm -f ./hostid.txt
 fi;
 if [ -z "${SET}" ]; then
-    echo "##### Setting hostId.txt file"
+  echo "##### Setting hostId.txt file"
+  rm -f ./hostid.txt
   echo "$SET" > ./hostid.txt
 fi;
 
