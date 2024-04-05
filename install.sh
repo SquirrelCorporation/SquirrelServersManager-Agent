@@ -80,12 +80,21 @@ else
 fi;
 
 # CHECK NODE VERSION
-node --version | grep "v" &> /dev/null
-if [ $? == 0 ]; then
- echo "Node is installed"
+echo "Checking node.js installation"
+if command -v node &> /dev/null; then
+    echo "node.js installation found"
 else
- echo "Error - Node not installed, install NodeJS (20) and NPM first"
- exit 1;
+    echo "node.js installation not found. Please install node.js."
+    exit 1
+fi
+
+# CHECK NPM VERSION
+echo "Checking node.js installation"
+if command -v npm &> /dev/null; then
+    echo "node.js installation found"
+else
+    echo "node.js installation not found. Please install node.js."
+    exit 1
 fi
 
 # CLEAN CURRENT INSTALL
