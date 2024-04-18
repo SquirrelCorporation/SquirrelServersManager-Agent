@@ -20,7 +20,7 @@
     "retry": "^0.13.1",
     "systeminformation": "^5.22.7",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.4",
+    "typescript": "^5.4.5",
     "axios": "^1.6.8",
     "winston": "^3.13.0",
     "winston-daily-rotate-file": "^5.0.0",
