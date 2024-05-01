@@ -3,9 +3,9 @@ import axios, {AxiosError} from "axios";
 import { URL_MASTER } from '../config';
 import logger from "../logger";
 
-const sendDeviceInfoToApi = async (hostId: string) => {
+const sendDeviceInfoToApi = async (hostId: string, deviceInfo: any) => {
     logger.info(`[AGENT] sendDeviceInfoToApi - To -> ${URL_MASTER}/api/devices/${hostId}`);
-    await getDeviceInfo(hostId).then(async (deviceInfo) => {
+
     await axios.post(`${URL_MASTER}/api/devices/${hostId}`, deviceInfo)
       .then(async response => {
         logger.info("[AGENT] sendDeviceInfoToApi - Success");
@@ -18,7 +18,6 @@ const sendDeviceInfoToApi = async (hostId: string) => {
           }
           throw new Error(`[AGENT] sendDeviceInfoToApi - Master node connection failed`);
       });
-  });
 }
 
 export default sendDeviceInfoToApi;

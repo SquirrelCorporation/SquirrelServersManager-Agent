@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon",
     "start": "npm run build && cross-env-shell NODE_ENV=production node build/agent.js ",
-    "build": "esbuild ./src/index.ts --bundle --platform=node --outfile=build/agent.js",
+    "build": "esbuild ./src/index.ts --bundle --platform=node --outfile=build/agent.js --loader:.node=file",
     "build-ncc": "ncc build  -o build/lib ./src/index.ts && pkg ./build/lib/index.js -t 'node18-macos-arm64' -o ./build/agent",
     "build-bun": "bun build ./src/index.ts --compile --outfile agentcli"
   },
@@ -25,7 +25,9 @@
     "winston": "^3.13.0",
     "winston-daily-rotate-file": "^5.0.0",
     "esbuild": "^0.20.2",
-    "node-cron": "^3.0.3"
+    "node-cron": "^3.0.3",
+    "dockerode": "^4.0.2",
+    "debounce": "^2.0.0"
   },
   "pkg": {
     "scripts": "dist/**/*.js",
@@ -36,7 +38,8 @@
     "@types/dotenv": "^8.2.0",
     "@types/node-os-utils": "^1.3.4",
     "@types/retry": "^0.12.5",
-    "@types/node-cron": "^3.0.11"
+    "@types/node-cron": "^3.0.11",
+    "@types/dockerode": "^3.3.28"
   },
   "engines": {
     "node": ">=20.0.0"

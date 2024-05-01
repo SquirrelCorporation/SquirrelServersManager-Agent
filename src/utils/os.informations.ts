@@ -1,7 +1,9 @@
-import si, {networkInterfaces} from 'systeminformation';
+import * as os from 'node:os';
+import si from 'systeminformation';
 import osu from 'node-os-utils';
 import logger from "../logger";
 import {version} from '../../package.json';
+import Docker from 'dockerode';
 
 export default async function getDeviceInfo(hostId : string) {
   let deviceInfo: ServerAPI.DeviceInfo = {id : hostId, agentVersion: version};
@@ -141,3 +143,5 @@ export default async function getDeviceInfo(hostId : string) {
   logger.debug(deviceInfo);
   return deviceInfo;
 }
+
+
