@@ -2,7 +2,6 @@ import cron from 'node-cron';
 import { STATISTICS_CRON_EXPRESSION, URL_MASTER } from '../config';
 import pingApi from "../api/ping";
 import retrieveOrRegisterDevice from "../api/register.device";
-import Docker from '../docker/Docker';
 import SystemInformation from '../system-information/SystemInformation';
 import logger, { LOG_DIRECTORY } from '../logger';
 import agentLoop from './loop.agent';
@@ -30,7 +29,6 @@ const startAgent = async () => {
   if (hostId) {
     logger.info(`[AGENT] startAgent -----> Starting Agent Loop`);
     new SystemInformation(hostId);
-    //new Docker(hostId);
     await agentLoop(hostId);
   } else {
     throw new Error("Internal error, hostid not set")
