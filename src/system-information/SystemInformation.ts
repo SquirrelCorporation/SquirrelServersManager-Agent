@@ -1,7 +1,6 @@
-import debounce = require('debounce');
 import cron from 'node-cron';
 import sendDeviceInfoToApi from '../api/device.info';
-import { DOCKER_CRON_EXPRESSION, STATISTICS_CRON_EXPRESSION } from '../config';
+import {  STATISTICS_CRON_EXPRESSION } from '../config';
 import logger from '../logger';
 import getDeviceInfo from '../utils/os.informations';
 
@@ -32,11 +31,6 @@ export default class SystemInformation {
 
     // watch at startup (after all components have been registered)
     this.watchCronTimeout = setTimeout(() => this.watchFromCron(), START_WATCHER_DELAY_MS);
-
-    // listen to docker events
-    this.watchCronDebounced = debounce(() => {
-      this.watchFromCron();
-    }, DEBOUNCED_WATCH_CRON_MS);
   }
 
   /**
