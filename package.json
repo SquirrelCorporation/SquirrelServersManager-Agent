@@ -12,7 +12,7 @@
     "build-ncc": "ncc build  -o build/lib ./src/index.ts && pkg ./build/lib/index.js -t 'node18-macos-arm64' -o ./build/agent",
     "build-bun": "bun build ./src/index.ts --compile --outfile agentcli"
   },
-  "author": "",
+  "author": "Squirrel Team",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
