@@ -13,7 +13,7 @@
     "build-bun": "bun build ./src/index.ts --compile --outfile agentcli"
   },
   "author": "Squirrel Team",
-  "license": "ISC",
+  "license": "AGPL-3.0 license",
   "dependencies": {
     "dotenv": "^16.4.5",
     "node-os-utils": "^1.3.7",
