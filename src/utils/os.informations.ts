@@ -1,9 +1,8 @@
-import * as os from 'node:os';
 import si from 'systeminformation';
 import osu from 'node-os-utils';
+import { OVERRIDE_IP_DETECTION } from '../config';
 import logger from "../logger";
 import {version} from '../../package.json';
-import Docker from 'dockerode';
 
 export default async function getDeviceInfo(hostId : string) {
   let deviceInfo: ServerAPI.DeviceInfo = {id : hostId, agentVersion: version};
@@ -17,9 +16,13 @@ export default async function getDeviceInfo(hostId : string) {
 
   const systemInfo = await si.get(valueObject);
   try {
-    await si.networkInterfaces('default').then((data: si.Systeminformation.NetworkInterfacesData | si.Systeminformation.NetworkInterfacesData[]) => {
-      deviceInfo.ip = (data as si.Systeminformation.NetworkInterfacesData).ip4
-    });
+    if (OVERRIDE_IP_DETECTION && OVERRIDE_IP_DETECTION !== 'AGENT_DETECTION') {
+      deviceInfo.ip = OVERRIDE_IP_DETECTION;
+    } else {
+      await si.networkInterfaces('default').then((data: si.Systeminformation.NetworkInterfacesData | si.Systeminformation.NetworkInterfacesData[]) => {
+        deviceInfo.ip = (data as si.Systeminformation.NetworkInterfacesData).ip4
+      });
+    }
     deviceInfo.uptime = osu.os.uptime();
     deviceInfo.fqdn = systemInfo.osInfo.fqdn;
     deviceInfo.hostname = systemInfo.osInfo.hostname;
