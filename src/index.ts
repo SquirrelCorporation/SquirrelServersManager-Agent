@@ -1,3 +1,3 @@
 import startAgent from "./agent/startup.agent";
 
-startAgent();
+void startAgent();
