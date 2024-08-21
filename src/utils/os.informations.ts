@@ -1,11 +1,11 @@
-import si from 'systeminformation';
 import osu from 'node-os-utils';
+import si from 'systeminformation';
+import { version } from '../../package.json';
 import { OVERRIDE_IP_DETECTION } from '../config';
-import logger from "../logger";
-import {version} from '../../package.json';
+import logger, { LOG_DIRECTORY } from '../logger';
 
 export default async function getDeviceInfo(hostId : string) {
-  let deviceInfo: ServerAPI.DeviceInfo = {id : hostId, agentVersion: version};
+  let deviceInfo: ServerAPI.DeviceInfo = {id : hostId, agentVersion: version, logPath: LOG_DIRECTORY};
 
   const valueObject = {
     cpu: '*',

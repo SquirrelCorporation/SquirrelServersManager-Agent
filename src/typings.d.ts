@@ -61,6 +61,7 @@ declare namespace ServerAPI {
 
   type DeviceInfo = {
     id: string;
+    logPath: string;
     os?: OSInfo;
     ip?: string;
     uptime?: number;
