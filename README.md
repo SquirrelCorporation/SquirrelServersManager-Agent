@@ -1,6 +1,8 @@
 # SSM Agent
 [Squirrel Servers Manager](https://squirrelserversmanager.io)
 
+[![CI Test](https://github.com/SquirrelCorporation/SquirrelServersManager-Agent/actions/workflows/ci.yml/badge.svg)](https://github.com/SquirrelCorporation/SquirrelServersManager-Agent/actions/workflows/ci.yml)
+
 See:
 [Technical Guide Agent](https://squirrelserversmanager.io/docs/manual-install-agent)
 
