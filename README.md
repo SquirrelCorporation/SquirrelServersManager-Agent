@@ -4,7 +4,7 @@
 [![CI Test](https://github.com/SquirrelCorporation/SquirrelServersManager-Agent/actions/workflows/ci.yml/badge.svg)](https://github.com/SquirrelCorporation/SquirrelServersManager-Agent/actions/workflows/ci.yml)
 
 See:
-[Technical Guide Agent](https://squirrelserversmanager.io/docs/manual-install-agent)
+[Technical Guide Agent](https://squirrelserversmanager.io/docs/technical-guide/manual-install-agent)
 
 It is possible to customize the behaviour of the agent by settings environment variables:
 
