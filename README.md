@@ -6,7 +6,7 @@
 See:
 [Technical Guide Agent](https://squirrelserversmanager.io/docs/technical-guide/manual-install-agent)
 
-It is possible to customize the behaviour of the agent by settings environment variables:
+It is possible to customize the behaviour of the agent by settings environment variables, in the `.env` file:
 
 | Env                 | Required |         Example         | Description                                                | 
 |---------------------|:--------:|:-----------------------:|------------------------------------------------------------|
