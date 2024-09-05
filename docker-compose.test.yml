@@ -11,4 +11,5 @@ services:
       LOG_DIRECTORY: '/app/logs'
     volumes:
       - .:/app
+      - ./test-results:/app/test-results
     command: ["npm", "test"]
