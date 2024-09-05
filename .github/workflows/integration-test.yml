@@ -46,10 +46,10 @@ jobs:
           chmod +x /usr/local/bin/docker-compose
 
       - name: Build Docker image
-        run: docker-compose build
+        run: docker-compose -f docker-compose.test.yml build
 
       - name: Run Tests
-        run: docker-compose up --abort-on-container-exit
+        run: docker-compose  -f docker-compose.test.yml up --abort-on-container-exit
 
       - name: Upload Test Results
         if: always()
