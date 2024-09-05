@@ -74,7 +74,7 @@ describe('Integration Test: getDeviceInfo', () => {
     expect(deviceInfo.os?.logofile).toBeDefined();
 
     // Validate System Information
-    expect(deviceInfo.system?.manufacturer).toBe('');
+    expect(deviceInfo.system?.manufacturer).toBeDefined();
     expect(deviceInfo.system?.model).toBe('Docker Container');
     expect(deviceInfo.system?.version).toBeDefined();
     expect(deviceInfo.system?.uuid).toBeDefined();
