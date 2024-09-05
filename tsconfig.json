@@ -8,6 +8,10 @@
     "esModuleInterop": true,
     "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "include": ["src//*.ts", "src//*.json", ".env", "typings.d.ts"],
 }
