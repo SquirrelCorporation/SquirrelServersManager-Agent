@@ -1,5 +1,10 @@
 # SSM Agent
-[Squirrel Servers Manager](https://squirrelserversmanager.io)
+[Website](https://squirrelserversmanager.io) - [Documentation](https://squirrelserversmanager.io/docs) - [Demo](https://demo.squirrelserversmanager.io) 
+<img src="https://raw.githubusercontent.com/SquirrelCorporation/SquirrelServersManager/master/client/public/logo.svg" align="right"
+     alt="SSM by Emmanuel Costa" width="120" height="178">
+
+Squirrel Servers Manager is an all-in-one configuration and container management tool, powered by Ansible and Docker, with a focus on UI/UX.
+It is designed to provide a user-friendly alternative to well-known established tools, while being totally open-source and free.
 
 [![CI Test](https://github.com/SquirrelCorporation/SquirrelServersManager-Agent/actions/workflows/ci.yml/badge.svg)](https://github.com/SquirrelCorporation/SquirrelServersManager-Agent/actions/workflows/ci.yml)
 [![Integration tests](https://github.com/SquirrelCorporation/SquirrelServersManager-Agent/actions/workflows/integration-test.yml/badge.svg)](https://github.com/SquirrelCorporation/SquirrelServersManager-Agent/actions/workflows/integration-test.yml)
