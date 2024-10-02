@@ -1,7 +1,7 @@
 // tests/integration/getDeviceInfo.test.ts
 
+import si from '@/utils/lib';
 import getDeviceInfo from '@/utils/os.informations';
-import si from 'systeminformation';
 
 jest.mock('@/logger');
 

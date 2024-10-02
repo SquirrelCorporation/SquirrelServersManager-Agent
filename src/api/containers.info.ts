@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { URL_MASTER } from '../config';
 import logger from '../logger';
-import getDeviceInfo from '../utils/os.informations';
 
 const sendContainerInfoToApi = async (hostId: string, containersResult: any) => {
   logger.info(`[AGENT] sendContainerInfoToApi - To -> ${URL_MASTER}/api/devices/containers/${hostId}`);
@@ -9,7 +8,7 @@ const sendContainerInfoToApi = async (hostId: string, containersResult: any) => 
   await axios.post(`${URL_MASTER}/api/devices/containers/${hostId}`, {containersResult: containersResult})
     .then(async response => {
       logger.info('[AGENT] sendDeviceInfoToApi - Success');
-      logger.debug(response.data);
+      logger.info(response.data);
     })
     .catch((error) => {
       logger.error(error.message);
