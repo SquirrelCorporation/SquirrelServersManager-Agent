@@ -1,4 +1,4 @@
-import logger from '@/logger';
+import logger from '../../logger';
 import { ssmExecSync } from '../process/exec';
 
 const runInHostNamespace = (command: string): string => {
