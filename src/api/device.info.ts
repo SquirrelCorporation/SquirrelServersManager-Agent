@@ -8,7 +8,7 @@ const sendDeviceInfoToApi = async (hostId: string, deviceInfo: any) => {
     await axios.post(`${URL_MASTER}/api/devices/${hostId}`, deviceInfo)
       .then(async response => {
         logger.info("[AGENT] sendDeviceInfoToApi - Success");
-        logger.debug(response.data);
+        logger.info(response.data);
       })
       .catch((error) => {
           logger.error(error.message);
