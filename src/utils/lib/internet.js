@@ -14,7 +14,7 @@
 // ----------------------------------------------------------------------------------
 
 const util = require('./util');
-const { getHostPlatform } = require('@/utils/os/os');
+const { getHostPlatform } = require('../os/os');
 const execSafe = require('../process/exec').execSafe;
 
 let _platform = getHostPlatform();

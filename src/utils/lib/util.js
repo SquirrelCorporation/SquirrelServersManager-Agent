@@ -19,7 +19,7 @@ const path = require('path');
 const exec = require('../process/exec').ssmExec;
 const execSync = require('../process/exec').ssmExecSync;
 const util = require('./util');
-const { getHostPlatform } = require('@/utils/os/os');
+const { getHostPlatform } = require('../os/os');
 
 let _platform = getHostPlatform();
 const _linux = (_platform === 'linux' || _platform === 'android');

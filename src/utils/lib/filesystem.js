@@ -15,7 +15,7 @@
 
 const util = require('./util');
 const fs = require('fs');
-const { getHostPlatform } = require('@/utils/os/os');
+const { getHostPlatform } = require('../os/os');
 
 const exec = require('../process/exec').ssmExec;
 const execSync = require('../process/exec').ssmExecSync;

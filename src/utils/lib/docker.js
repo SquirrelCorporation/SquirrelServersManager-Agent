@@ -15,7 +15,7 @@
 
 const util = require('./util');
 const DockerSocket = require('./dockerSocket');
-const { getHostPlatform } = require('@/utils/os/os');
+const { getHostPlatform } = require('../os/os');
 
 let _platform = getHostPlatform();
 const _windows = (_platform === 'win32');

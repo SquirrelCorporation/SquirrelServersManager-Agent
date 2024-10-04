@@ -17,7 +17,7 @@ const fs = require('fs');
 const exec = require('../process/exec').ssmExec;
 const execSync = require('../process/exec').ssmExecSync;
 const util = require('./util');
-const { getHostPlatform } = require('@/utils/os/os');
+const { getHostPlatform } = require('../os/os');
 
 let _platform = getHostPlatform();
 let _nvidiaSmiPath = '';
