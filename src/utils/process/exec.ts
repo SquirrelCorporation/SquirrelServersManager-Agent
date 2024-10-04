@@ -1,11 +1,11 @@
 import { exec, execSync, spawn } from 'child_process';
 
 export const ssmExecSync = (command: string, options: any )=> {
-  return execSync(`nsenter -t 1 -m -u -n -i sh ${command}`, options);
+  return execSync(`nsenter -t 1 -m -u -n -i sh -c "${command}"`, options);
 }
 
 export const ssmExec = (command: string, options: any )=> {
-  return exec(`nsenter -t 1 -m -u -n -i sh ${command}`, options);
+  return exec(`nsenter -t 1 -m -u -n -i sh -c "${command}"`, options);
 }
 
 export const execSafe = (cmd: string, args?: any, options?: any) => {
@@ -15,7 +15,7 @@ export const execSafe = (cmd: string, args?: any, options?: any) => {
   return new Promise((resolve) => {
     process.nextTick(() => {
       try {
-        const child = spawn(`nsenter -t 1 -m -u -n -i sh ${cmd}`, args, options);
+        const child = spawn(`nsenter -t 1 -m -u -n -i sh -c "${cmd}"`, args, options);
 
         if (child && !child.pid) {
           child.on('error', function () {
