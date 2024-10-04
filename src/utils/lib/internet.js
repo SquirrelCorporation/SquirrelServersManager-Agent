@@ -14,6 +14,7 @@
 // ----------------------------------------------------------------------------------
 
 const util = require('./util');
+const execSafe = require('../process/exec').execSafe;
 
 let _platform = process.platform;
 
@@ -67,7 +68,7 @@ function inetChecksite(url, callback) {
             let args = ['-I', '--connect-timeout', '5', '-m', '5'];
             args.push(urlSanitized);
             let cmd = 'curl';
-            util.execSafe(cmd, args).then((stdout) => {
+            execSafe(cmd, args).then((stdout) => {
               const lines = stdout.split('\n');
               let statusCode = lines[0] && lines[0].indexOf(' ') >= 0 ? parseInt(lines[0].split(' ')[1], 10) : 404;
               result.status = statusCode || 404;
@@ -169,7 +170,7 @@ function inetLatency(host, callback) {
         if (_darwin) {
           params = ['-c2', '-t3', hostSanitized];
         }
-        util.execSafe('ping', params).then((stdout) => {
+        execSafe('ping', params).then((stdout) => {
           let result = null;
           if (stdout) {
             const lines = stdout.split('\n').filter((line) => (line.indexOf('rtt') >= 0 || line.indexOf('round-trip') >= 0 || line.indexOf('avg') >= 0)).join('\n');
@@ -189,7 +190,7 @@ function inetLatency(host, callback) {
       if (_sunos) {
         const params = ['-s', '-a', hostSanitized, '56', '2'];
         const filt = 'avg';
-        util.execSafe('ping', params, { timeout: 3000 }).then((stdout) => {
+        execSafe('ping', params, { timeout: 3000 }).then((stdout) => {
           let result = null;
           if (stdout) {
             const lines = stdout.split('\n').filter(line => line.indexOf(filt) >= 0).join('\n');
@@ -209,7 +210,7 @@ function inetLatency(host, callback) {
         let result = null;
         try {
           const params = [hostSanitized, '-n', '1'];
-          util.execSafe('ping', params, util.execOptsWin).then((stdout) => {
+          execSafe('ping', params, util.execOptsWin).then((stdout) => {
             if (stdout) {
               let lines = stdout.split('\r\n');
               lines.shift();

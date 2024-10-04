@@ -14,7 +14,7 @@
 // ----------------------------------------------------------------------------------
 
 const os = require('os');
-const exec = require('child_process').exec;
+const exec = require('../process/exec').ssmExec;
 const util = require('./util');
 
 function vboxInfo(callback) {

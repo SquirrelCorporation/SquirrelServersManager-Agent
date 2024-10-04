@@ -13,7 +13,7 @@
 // 16. usb
 // ----------------------------------------------------------------------------------
 
-const exec = require('child_process').exec;
+const exec = require('../process/exec').ssmExec;
 const util = require('./util');
 
 let _platform = process.platform;

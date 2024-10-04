@@ -13,8 +13,8 @@
 // 17. bluetooth
 // ----------------------------------------------------------------------------------
 
-const exec = require('child_process').exec;
-const execSync = require('child_process').execSync;
+const exec = require('../process/exec').ssmExec;
+const execSync = require('../process/exec').ssmExecSync;
 const path = require('path');
 const util = require('./util');
 const fs = require('fs');

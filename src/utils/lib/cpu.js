@@ -14,8 +14,8 @@
 // ----------------------------------------------------------------------------------
 
 const os = require('os');
-const exec = require('child_process').exec;
-const execSync = require('child_process').execSync;
+const exec = require('../process/exec').ssmExec;
+const execSync = require('../process/exec').ssmExecSync;
 const fs = require('fs');
 const util = require('./util');
 

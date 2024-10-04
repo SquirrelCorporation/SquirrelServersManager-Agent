@@ -16,8 +16,9 @@
 const os = require('os');
 const fs = require('fs');
 const path = require('path');
-const exec = require('child_process').exec;
-const execSync = require('child_process').execSync;
+const exec = require('../process/exec').ssmExec;
+const execSync = require('../process/exec').ssmExecSync;
+const execSafe = require('../process/exec').execSafe;
 
 const util = require('./util');
 
@@ -199,7 +200,7 @@ function services(srv, callback) {
           }
           let args = (_darwin) ? ['-caxo', 'pcpu,pmem,pid,command'] : ['-axo', 'pcpu,pmem,pid,command'];
           if (srvString !== '' && srvs.length > 0) {
-            util.execSafe('ps', args).then((stdout) => {
+            execSafe('ps', args).then((stdout) => {
               if (stdout) {
                 let lines = stdout.replace(/ +/g, ' ').replace(/,+/g, '.').split('\n');
                 srvs.forEach(function (srv) {
@@ -293,7 +294,7 @@ function services(srv, callback) {
                 }
               } else {
                 args = ['-o', 'comm'];
-                util.execSafe('ps', args).then((stdout) => {
+                execSafe('ps', args).then((stdout) => {
                   if (stdout) {
                     let lines = stdout.replace(/ +/g, ' ').replace(/,+/g, '.').split('\n');
                     srvs.forEach(function (srv) {
@@ -1137,7 +1138,7 @@ function processLoad(proc, callback) {
 
         if (_darwin || _linux || _freebsd || _openbsd || _netbsd) {
           const params = ['-axo', 'pid,ppid,pcpu,pmem,comm'];
-          util.execSafe('ps', params).then((stdout) => {
+          execSafe('ps', params).then((stdout) => {
             if (stdout) {
               let procStats = [];
               let lines = stdout.toString().split('\n').filter(function (line) {

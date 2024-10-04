@@ -16,9 +16,9 @@
 const fs = require('fs');
 const os = require('os');
 const util = require('./util');
-const exec = require('child_process').exec;
-const execSync = require('child_process').execSync;
-const execPromise = util.promisify(require('child_process').exec);
+const exec = require('../process/exec').ssmExec;
+const execSync = require('../process/exec').ssmExecSync;
+const execPromise = util.promisify(require('../process/exec').ssmExec);
 
 let _platform = process.platform;
 

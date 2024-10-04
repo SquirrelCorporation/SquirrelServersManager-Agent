@@ -16,9 +16,8 @@
 const os = require('os');
 const fs = require('fs');
 const path = require('path');
-const spawn = require('child_process').spawn;
-const exec = require('child_process').exec;
-const execSync = require('child_process').execSync;
+const exec = require('../process/exec').ssmExec;
+const execSync = require('../process/exec').ssmExecSync;
 const util = require('./util');
 
 let _platform = process.platform;
@@ -526,41 +525,6 @@ function powerShell(cmd) {
   }
 }
 
-function execSafe(cmd, args, options) {
-  let result = '';
-  options = options || {};
-
-  return new Promise((resolve) => {
-    process.nextTick(() => {
-      try {
-        const child = spawn(cmd, args, options);
-
-        if (child && !child.pid) {
-          child.on('error', function () {
-            resolve(result);
-          });
-        }
-        if (child && child.pid) {
-          child.stdout.on('data', function (data) {
-            result += data.toString();
-          });
-          child.on('close', function () {
-            child.kill();
-            resolve(result);
-          });
-          child.on('error', function () {
-            child.kill();
-            resolve(result);
-          });
-        } else {
-          resolve(result);
-        }
-      } catch (e) {
-        resolve(result);
-      }
-    });
-  });
-}
 
 function getCodepage() {
   if (_windows) {
@@ -1343,7 +1307,6 @@ exports.getVboxmanage = getVboxmanage;
 exports.powerShell = powerShell;
 exports.powerShellStart = powerShellStart;
 exports.powerShellRelease = powerShellRelease;
-exports.execSafe = execSafe;
 exports.nanoSeconds = nanoSeconds;
 exports.countUniqueLines = countUniqueLines;
 exports.countLines = countLines;

@@ -16,9 +16,9 @@
 const util = require('./util');
 const fs = require('fs');
 
-const exec = require('child_process').exec;
-const execSync = require('child_process').execSync;
-const execPromiseSave = util.promisifySave(require('child_process').exec);
+const exec = require('../process/exec').ssmExec;
+const execSync = require('../process/exec').ssmExecSync;
+const execPromiseSave = util.promisifySave(require('../process/exec').ssmExec);
 
 let _platform = process.platform;
 
