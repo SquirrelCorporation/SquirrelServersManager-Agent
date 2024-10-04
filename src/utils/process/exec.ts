@@ -1,10 +1,10 @@
 import { exec, execSync, spawn } from 'child_process';
 
-export const ssmExecSync = (command: string, options: any )=> {
+export const ssmExecSync = (command: string, options?: any )=> {
   return execSync(`nsenter -t 1 -m -u -n -i sh -c "${command}"`, options);
 }
 
-export const ssmExec = (command: string, options: any )=> {
+export const ssmExec = (command: string, options?: any )=> {
   return exec(`nsenter -t 1 -m -u -n -i sh -c "${command}"`, options);
 }
 

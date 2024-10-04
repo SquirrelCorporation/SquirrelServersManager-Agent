@@ -16,10 +16,11 @@
 const os = require('os');
 const fs = require('fs');
 const util = require('./util');
+const { getHostPlatform } = require('@/utils/os/os');
 const exec = require('../process/exec').ssmExec;
 const execSync = require('../process/exec').ssmExecSync;
 
-let _platform = process.platform;
+let _platform = getHostPlatform();
 
 const _linux = (_platform === 'linux' || _platform === 'android');
 const _darwin = (_platform === 'darwin');

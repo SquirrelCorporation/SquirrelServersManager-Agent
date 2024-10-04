@@ -16,11 +16,12 @@
 const fs = require('fs');
 const os = require('os');
 const util = require('./util');
+const { getHostPlatform } = require('@/utils/os/os');
 const exec = require('../process/exec').ssmExec;
 const execSync = require('../process/exec').ssmExecSync;
 const execPromise = util.promisify(require('../process/exec').ssmExec);
 
-let _platform = process.platform;
+let _platform = getHostPlatform();
 
 const _linux = (_platform === 'linux' || _platform === 'android');
 const _darwin = (_platform === 'darwin');
@@ -151,9 +152,9 @@ function system(callback) {
             }
           }
           // detect docker
-          if (fs.existsSync('/.dockerenv') || fs.existsSync('/.dockerinit')) {
+        /*  if (fs.existsSync('/.dockerenv') || fs.existsSync('/.dockerinit')) {
             result.model = 'Docker Container';
-          }
+          }*/
           try {
             const stdout = execSync('dmesg 2>/dev/null | grep -iE "virtual|hypervisor" | grep -iE "vmware|qemu|kvm|xen" | grep -viE "Nested Virtualization|/virtual/"');
             // detect virtual machines

@@ -42,8 +42,9 @@ const printer = require('./printer');
 const usb = require('./usb');
 const audio = require('./audio');
 const bluetooth = require('./bluetooth');
+const { getHostPlatform } = require('@/utils/os/os');
 
-let _platform = process.platform;
+let _platform = getHostPlatform();
 const _windows = (_platform === 'win32');
 const _freebsd = (_platform === 'freebsd');
 const _openbsd = (_platform === 'openbsd');

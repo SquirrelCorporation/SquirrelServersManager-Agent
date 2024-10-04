@@ -18,8 +18,9 @@ const execSync = require('../process/exec').ssmExecSync;
 const path = require('path');
 const util = require('./util');
 const fs = require('fs');
+const { getHostPlatform } = require('@/utils/os/os');
 
-let _platform = process.platform;
+let _platform = getHostPlatform();
 
 const _linux = (_platform === 'linux' || _platform === 'android');
 const _darwin = (_platform === 'darwin');
