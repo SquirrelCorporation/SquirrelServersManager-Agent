@@ -1,7 +1,7 @@
+import { LOGS_PATH } from '@/config';
 import winston from 'winston';
 import 'winston-daily-rotate-file';
 
-export const LOG_DIRECTORY = (process.cwd() || __dirname) + '/logs';
 
 const transport = new winston.transports.DailyRotateFile({
   level: 'info',
@@ -10,7 +10,7 @@ const transport = new winston.transports.DailyRotateFile({
   zippedArchive: true,
   maxSize: '20m',
   maxFiles: '14d',
-  dirname: LOG_DIRECTORY
+  dirname: LOGS_PATH
 });
 
 const logger = winston.createLogger({
