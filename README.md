@@ -25,6 +25,28 @@ It is possible to customize the behaviour of the agent by settings environment v
 
 ## Experimental: Docker Version
 
+```docker
+version: '3.8'
+
+services:
+  ssm_agent:
+    image: ghcr.io/squirrelcorporation/squirrelserversmanager-agent:docker
+    network_mode: host
+    privileged: true
+    environment:
+      - API_URL_MASTER=${API_URL_MASTER}
+    pid: host
+    restart: unless-stopped
+    volumes:
+      - /proc:/proc
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ssm-agent-data:/data
+
+volumes:
+  ssm-agent-data:
+
+```
+
 ```shell
 git clone https://github.com/SquirrelCorporation/SquirrelServersManager-Agent
 git checkout docker
