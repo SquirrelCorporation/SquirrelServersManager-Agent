@@ -1,9 +1,9 @@
 import cron from 'node-cron';
-import { STATISTICS_CRON_EXPRESSION, URL_MASTER } from '../config';
-import pingApi from "../api/ping";
-import retrieveOrRegisterDevice from "../api/register.device";
+import pingApi from '../api/ping';
+import retrieveOrRegisterDevice from '../api/register.device';
+import { LOGS_PATH, STATISTICS_CRON_EXPRESSION, URL_MASTER } from '../config';
+import logger from '../logger';
 import SystemInformation from '../system-information/SystemInformation';
-import logger, { LOG_DIRECTORY } from '../logger';
 import agentLoop from './loop.agent';
 
 
@@ -11,7 +11,7 @@ const startAgent = async () => {
   logger.info(`#############################################`);
   logger.info(`###### SQUIRREL SERVERS MANAGER AGENT #######`);
   logger.info(`#############################################`);
-  logger.info(`[AGENT] startAgent - Logs in ${LOG_DIRECTORY}`);
+  logger.info(`[AGENT] startAgent - Logs in ${LOGS_PATH}`);
   if (!cron.validate(STATISTICS_CRON_EXPRESSION)) {
     logger.error("[AGENT] startAgent - Cron expression invalid");
     throw new Error("[AGENT] startAgent - Cron expression invalid");
