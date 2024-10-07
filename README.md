@@ -25,7 +25,7 @@ It is possible to customize the behaviour of the agent by settings environment v
 
 ---
 
-## 🧪 Experimental Docker Version (Only Linux)
+## 🧪 Experimental Docker Version (Linux Only)
 
 ```yaml
 version: '3.8'
