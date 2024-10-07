@@ -1,11 +1,11 @@
 import osu from 'node-os-utils';
 import { version } from '../../package.json';
-import { OVERRIDE_IP_DETECTION } from '../config';
-import logger, { LOG_DIRECTORY } from '../logger';
+import { LOGS_PATH, OVERRIDE_IP_DETECTION } from '../config';
+import logger from '../logger';
 import si from './lib';
 
 export default async function getDeviceInfo(hostId : string) {
-  let deviceInfo: ServerAPI.DeviceInfo = {id : hostId, agentVersion: version, logPath: LOG_DIRECTORY};
+  let deviceInfo: ServerAPI.DeviceInfo = {id : hostId, agentVersion: version, agentType: 'docker', logPath: LOGS_PATH};
 
   const valueObject = {
     cpu: '*',

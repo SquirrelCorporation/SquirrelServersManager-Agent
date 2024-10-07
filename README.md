@@ -21,3 +21,25 @@ It is possible to customize the behaviour of the agent by settings environment v
 | `AGENT_HEALTH_CRON_EXPRESSION` |    NO    |       '*/30 * * * * *'      | Frequency of agent self-check                              |
 | `STATISTICS_CRON_EXPRESSION` |    NO    |       '*/30 * * * * *'      | Frequency of stats push                                    |
 
+## Experimental: Docker Version
+
+```shell
+git clone https://github.com/SquirrelCorporation/SquirrelServersManager-Agent
+git checkout docker
+docker compose up
+```
+or
+```shell
+docker pull ghcr.io/squirrelcorporation/squirrelserversmanager-agent:docker
+docker volume create ssm-agent-data
+docker run --network host \
+  -e API_URL_MASTER=<API_URL> \
+  --privileged \
+  --pid=host \
+  -v /proc:/proc \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v ssm-agent-data:/data \
+  --restart unless-stopped \
+  ghcr.io/squirrelcorporation/squirrelserversmanager-agent:docker
+```
+
