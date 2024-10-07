@@ -67,10 +67,10 @@ docker run --network host \
   -v ssm-agent-data:/data \
   --restart unless-stopped \
   ghcr.io/squirrelcorporation/squirrelserversmanager-agent:docker
+```
 
 ### Specific env vars for Docker version
 
-```
 | Env                 | Required |         Example         | Description                                                | 
 |---------------------|:--------:|:-----------------------:|------------------------------------------------------------|
 | `URL_MASTER` |   YES    | http://192.168.0.3:8000 | URL of the SSM API                                         |
