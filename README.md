@@ -25,7 +25,7 @@ It is possible to customize the behaviour of the agent by settings environment v
 
 ## Experimental: Docker Version
 
-```docker
+```yaml
 version: '3.8'
 
 services:
@@ -47,13 +47,13 @@ volumes:
 
 ```
 
-```shell
+```console
 git clone https://github.com/SquirrelCorporation/SquirrelServersManager-Agent
 git checkout docker
 API_URL_MASTER=<API_URL> docker-compose up -d
 ```
 or
-```shell
+```console
 docker pull ghcr.io/squirrelcorporation/squirrelserversmanager-agent:docker
 docker volume create ssm-agent-data
 docker run --network host \
