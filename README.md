@@ -23,6 +23,8 @@ It is possible to customize the behaviour of the agent by settings environment v
 ## Recommanded: Install from the UI
 [Adding a device](https://squirrelserversmanager.io/docs/devices/add-device)
 
+---
+
 ## Experimental: Docker Version
 
 ```yaml
@@ -46,7 +48,7 @@ volumes:
   ssm-agent-data:
 
 ```
-
+or
 ```console
 git clone https://github.com/SquirrelCorporation/SquirrelServersManager-Agent
 git checkout docker
@@ -65,6 +67,9 @@ docker run --network host \
   -v ssm-agent-data:/data \
   --restart unless-stopped \
   ghcr.io/squirrelcorporation/squirrelserversmanager-agent:docker
+
+### Specific env vars for Docker version
+
 ```
 | Env                 | Required |         Example         | Description                                                | 
 |---------------------|:--------:|:-----------------------:|------------------------------------------------------------|
