@@ -21,6 +21,9 @@ It is possible to customize the behaviour of the agent by settings environment v
 | `AGENT_HEALTH_CRON_EXPRESSION` |    NO    |       '*/30 * * * * *'      | Frequency of agent self-check                              |
 | `STATISTICS_CRON_EXPRESSION` |    NO    |       '*/30 * * * * *'      | Frequency of stats push                                    |
 
+## Recommanded: Install from the UI
+[Adding a device](https://squirrelserversmanager.io/docs/devices/add-device)
+
 ## Experimental: Docker Version
 
 ```shell
