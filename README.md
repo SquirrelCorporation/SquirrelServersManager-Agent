@@ -26,7 +26,7 @@ It is possible to customize the behaviour of the agent by settings environment v
 ```shell
 git clone https://github.com/SquirrelCorporation/SquirrelServersManager-Agent
 git checkout docker
-docker compose up
+API_URL_MASTER=<API_URL> docker-compose up -d
 ```
 or
 ```shell
