@@ -21,3 +21,32 @@ It is possible to customize the behaviour of the agent by settings environment v
 | `AGENT_HEALTH_CRON_EXPRESSION` |    NO    |       '*/30 * * * * *'      | Frequency of agent self-check                              |
 | `STATISTICS_CRON_EXPRESSION` |    NO    |       '*/30 * * * * *'      | Frequency of stats push                                    |
 
+## Experimental: Docker Version
+
+```shell
+git clone https://github.com/SquirrelCorporation/SquirrelServersManager-Agent
+git checkout docker
+docker compose up
+```
+or
+```shell
+docker pull ghcr.io/squirrelcorporation/squirrelserversmanager-agent:docker
+docker volume create ssm-agent-data
+docker run --network host \
+  -e API_URL_MASTER=<API_URL> \
+  --privileged \
+  --pid=host \
+  -v /proc:/proc \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v ssm-agent-data:/data \
+  --restart unless-stopped \
+  ghcr.io/squirrelcorporation/squirrelserversmanager-agent:docker
+```
+| Env                 | Required |         Example         | Description                                                | 
+|---------------------|:--------:|:-----------------------:|------------------------------------------------------------|
+| `URL_MASTER` |   YES    | http://192.168.0.3:8000 | URL of the SSM API                                         |
+| `OVERRIDE_IP_DETECTION` |    NO    |       192.168.0.1       | Disable the auto-detection of the IP and set a fixed value |
+| `AGENT_HEALTH_CRON_EXPRESSION` |    NO    |       '*/30 * * * * *'      | Frequency of agent self-check                              |
+| `STATISTICS_CRON_EXPRESSION` |    NO    |       '*/30 * * * * *'      | Frequency of stats push                                    |
+| `HOST_ID_PATH` |    NO    |      `/data/`     | Path where is stored the registered HostID                                    |
+| `LOGS_PATH` |    NO    |      `/data/logs`     | Path where are store the logs                                    |
