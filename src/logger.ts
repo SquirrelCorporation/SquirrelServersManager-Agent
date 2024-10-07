@@ -1,5 +1,5 @@
-import { LOGS_PATH } from '@/config';
 import winston from 'winston';
+import { LOGS_PATH } from './config';
 import 'winston-daily-rotate-file';
 
 
