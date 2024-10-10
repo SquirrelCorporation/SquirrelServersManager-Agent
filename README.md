@@ -79,3 +79,4 @@ docker run --network host \
 | `STATISTICS_CRON_EXPRESSION` |    NO    |       '*/30 * * * * *'      | Frequency of stats push                                    |
 | `HOST_ID_PATH` |    NO    |      `/data/`     | Path where is stored the registered HostID                                    |
 | `LOGS_PATH` |    NO    |      `/data/logs`     | Path where are store the logs                                    |
+| `HOST_ID` |    NO    |     xxx-xxx-xxx-xxx    | UUID of the registered Device in SSM                                  |
