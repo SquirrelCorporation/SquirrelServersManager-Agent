@@ -35,8 +35,8 @@ services:
     image: ghcr.io/squirrelcorporation/squirrelserversmanager-agent:docker
     network_mode: host
     privileged: true
-    environment:
-      - API_URL_MASTER=${API_URL_MASTER}
+    env_file:
+      - .env
     pid: host
     restart: unless-stopped
     volumes:
@@ -52,14 +52,13 @@ or
 ```console
 git clone https://github.com/SquirrelCorporation/SquirrelServersManager-Agent
 git checkout docker
-API_URL_MASTER=<API_URL> docker-compose up -d
+docker-compose up -d
 ```
 or
 ```console
 docker pull ghcr.io/squirrelcorporation/squirrelserversmanager-agent:docker
 docker volume create ssm-agent-data
 docker run --network host \
-  -e API_URL_MASTER=<API_URL> \
   --privileged \
   --pid=host \
   -v /proc:/proc \
