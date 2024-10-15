@@ -5,8 +5,8 @@ services:
     image: ghcr.io/squirrelcorporation/squirrelserversmanager-agent:docker
     network_mode: host
     privileged: true
-    environment:
-      - API_URL_MASTER=${API_URL_MASTER}
+    env_file:
+      - .env
     pid: host
     restart: unless-stopped
     volumes:
