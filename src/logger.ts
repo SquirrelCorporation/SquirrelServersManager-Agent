@@ -14,7 +14,7 @@ const transport = new winston.transports.DailyRotateFile({
 });
 
 const logger = winston.createLogger({
-      level: process.env.NODE_ENV === "development" ? "debug" : "info",
+      level: process.env.NODE_ENV === "development" || process.env.DEBUG  ? "debug" : "info",
     format: winston.format.combine(
       winston.format.timestamp(), // adds a timestamp property
       winston.format.json()
