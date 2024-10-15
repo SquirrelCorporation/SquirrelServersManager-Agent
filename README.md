@@ -7,7 +7,6 @@ Squirrel Servers Manager is an all-in-one configuration and container management
 It is designed to provide a user-friendly alternative to well-known established tools, while being totally open-source and free.
 
 [![CI Test](https://github.com/SquirrelCorporation/SquirrelServersManager-Agent/actions/workflows/ci.yml/badge.svg)](https://github.com/SquirrelCorporation/SquirrelServersManager-Agent/actions/workflows/ci.yml)
-[![Integration tests](https://github.com/SquirrelCorporation/SquirrelServersManager-Agent/actions/workflows/integration-test.yml/badge.svg)](https://github.com/SquirrelCorporation/SquirrelServersManager-Agent/actions/workflows/integration-test.yml)
 
 See:
 [Technical Guide Agent](https://squirrelserversmanager.io/docs/technical-guide/manual-install-agent)
@@ -22,19 +21,45 @@ It is possible to customize the behaviour of the agent by settings environment v
 | `STATISTICS_CRON_EXPRESSION`   |    NO    |    '*/30 * * * * *'     | Frequency of stats push                                    |
 | `DEBUG`                        |    NO    |          true           | Enable debug logs                                          |
 
-## Experimental: Docker Version
+## ❤️ Recommanded: Install from the UI
+[Adding a device](https://squirrelserversmanager.io/docs/devices/add-device)
 
-```shell
-git clone https://github.com/SquirrelCorporation/SquirrelServersManager-Agent
-git checkout docker
-docker compose up
+---
+
+## 🧪 Experimental Docker Version (Linux Only)
+
+```yaml
+version: '3.8'
+
+services:
+  ssm_agent:
+    image: ghcr.io/squirrelcorporation/squirrelserversmanager-agent:docker
+    network_mode: host
+    privileged: true
+    env_file:
+      - .env
+    pid: host
+    restart: unless-stopped
+    volumes:
+      - /proc:/proc
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ssm-agent-data:/data
+
+volumes:
+  ssm-agent-data:
+
 ```
 or
-```shell
+```console
+git clone https://github.com/SquirrelCorporation/SquirrelServersManager-Agent
+git checkout docker
+docker-compose up -d
+```
+or
+```console
 docker pull ghcr.io/squirrelcorporation/squirrelserversmanager-agent:docker
 docker volume create ssm-agent-data
 docker run --network host \
-  -e API_URL_MASTER=<API_URL> \
   --privileged \
   --pid=host \
   -v /proc:/proc \
@@ -44,3 +69,15 @@ docker run --network host \
   ghcr.io/squirrelcorporation/squirrelserversmanager-agent:docker
 ```
 
+### Specific env vars for Docker version
+
+| Env                 | Required |         Example         | Description                                                | 
+|---------------------|:--------:|:-----------------------:|------------------------------------------------------------|
+| `URL_MASTER` |   YES    | http://192.168.0.3:8000 | URL of the SSM API                                         |
+| `OVERRIDE_IP_DETECTION` |    NO    |       192.168.0.1       | Disable the auto-detection of the IP and set a fixed value |
+| `AGENT_HEALTH_CRON_EXPRESSION` |    NO    |       '*/30 * * * * *'      | Frequency of agent self-check                              |
+| `STATISTICS_CRON_EXPRESSION` |    NO    |       '*/30 * * * * *'      | Frequency of stats push                                    |
+| `HOST_ID_PATH` |    NO    |      `/data/`     | Path where is stored the registered HostID                                    |
+| `LOGS_PATH` |    NO    |      `/data/logs`     | Path where are store the logs                                    |
+| `HOST_ID` |    NO    |     xxx-xxx-xxx-xxx    | UUID of the registered Device in SSM                                  |
+| `DEBUG`                        |    NO    |          true           | Enable debug logs                                          |
