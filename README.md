@@ -36,8 +36,8 @@ services:
     image: ghcr.io/squirrelcorporation/squirrelserversmanager-agent:docker
     network_mode: host
     privileged: true
-    environment:
-      - API_URL_MASTER=${API_URL_MASTER}
+    env_file:
+      - .env
     pid: host
     restart: unless-stopped
     volumes:
@@ -53,14 +53,13 @@ or
 ```console
 git clone https://github.com/SquirrelCorporation/SquirrelServersManager-Agent
 git checkout docker
-API_URL_MASTER=<API_URL> docker-compose up -d
+docker-compose up -d
 ```
 or
 ```console
 docker pull ghcr.io/squirrelcorporation/squirrelserversmanager-agent:docker
 docker volume create ssm-agent-data
 docker run --network host \
-  -e API_URL_MASTER=<API_URL> \
   --privileged \
   --pid=host \
   -v /proc:/proc \
@@ -80,4 +79,5 @@ docker run --network host \
 | `STATISTICS_CRON_EXPRESSION` |    NO    |       '*/30 * * * * *'      | Frequency of stats push                                    |
 | `HOST_ID_PATH` |    NO    |      `/data/`     | Path where is stored the registered HostID                                    |
 | `LOGS_PATH` |    NO    |      `/data/logs`     | Path where are store the logs                                    |
+| `HOST_ID` |    NO    |     xxx-xxx-xxx-xxx    | UUID of the registered Device in SSM                                  |
 | `DEBUG`                        |    NO    |          true           | Enable debug logs                                          |
