@@ -40,6 +40,7 @@ export default class SystemInformation {
   async watchFromCron() {
     logger.info(`Cron started (${STATISTICS_CRON_EXPRESSION})`);
     await getDeviceInfo(this.hostId).then(async (deviceInfo) => {
+      logger.debug(deviceInfo);
       await sendDeviceInfoToApi(this.hostId, deviceInfo);
     });
   }

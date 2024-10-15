@@ -19,6 +19,7 @@ It is possible to customize the behaviour of the agent by settings environment v
 | `OVERRIDE_IP_DETECTION` |    NO    |       192.168.0.1       | Disable the auto-detection of the IP and set a fixed value |
 | `AGENT_HEALTH_CRON_EXPRESSION` |    NO    |       '*/30 * * * * *'      | Frequency of agent self-check                              |
 | `STATISTICS_CRON_EXPRESSION` |    NO    |       '*/30 * * * * *'      | Frequency of stats push                                    |
+| `DEBUG`                        |    NO    |          true           | Enable debug logs                                          |
 
 ## ❤️ Recommanded: Install from the UI
 [Adding a device](https://squirrelserversmanager.io/docs/devices/add-device)
@@ -79,3 +80,4 @@ docker run --network host \
 | `STATISTICS_CRON_EXPRESSION` |    NO    |       '*/30 * * * * *'      | Frequency of stats push                                    |
 | `HOST_ID_PATH` |    NO    |      `/data/`     | Path where is stored the registered HostID                                    |
 | `LOGS_PATH` |    NO    |      `/data/logs`     | Path where are store the logs                                    |
+| `DEBUG`                        |    NO    |          true           | Enable debug logs                                          |

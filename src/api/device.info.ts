@@ -12,6 +12,7 @@ const sendDeviceInfoToApi = async (hostId: string, deviceInfo: any) => {
       })
       .catch((error) => {
           logger.error(error.message);
+          logger.debug(error);
           if (error?.response?.status === 404) {
               throw new Error(`[AGENT] sendDeviceInfoToApi - Trying to send device info without registering first try to delete the hostid.txt file first`);
           }
