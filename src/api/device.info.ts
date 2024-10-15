@@ -2,6 +2,12 @@ import axios from 'axios';
 import { URL_MASTER } from '../config';
 import logger from '../logger';
 
+const logHeaders = (headers: any) => {
+    logger.debug('[AGENT] sendDeviceInfoToApi - Response Headers:');
+    for (const [key, value] of Object.entries(headers)) {
+        logger.debug(`Header:   ${key}: ${value}`);
+    }
+};
 const sendDeviceInfoToApi = async (hostId: string, deviceInfo: any) => {
     logger.info(`[AGENT] sendDeviceInfoToApi - To -> ${URL_MASTER}/api/devices/${hostId}`);
 
@@ -12,6 +18,8 @@ const sendDeviceInfoToApi = async (hostId: string, deviceInfo: any) => {
       })
       .catch((error) => {
           logger.error(error.message);
+          logger.debug(error);
+          logHeaders(error.response.headers);
           if (error?.response?.status === 404) {
               throw new Error(`[AGENT] sendDeviceInfoToApi - Trying to send device info without registering first try to delete the hostid.txt file first`);
           }
