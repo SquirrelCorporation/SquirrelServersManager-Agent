@@ -72,6 +72,7 @@ declare namespace ServerAPI {
     system?: SystemInfo;
     cpu?: CPUInfo;
     agentVersion?: string;
+    agentType?: string;
   }
 
   type VersionData = {

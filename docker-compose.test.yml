@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  test:
+    build:
+      context: .
+      dockerfile: ./docker/test/Dockerfile
+    environment:
+      OVERRIDE_IP_DETECTION: '192.168.1.100'
+      NODE_ENV: test
+      LOG_DIRECTORY: '/app/logs'
+    volumes:
+      - .:/app
+      - ./test-results:/app/test-results
+    command: ["npm", "test"]
