@@ -8,14 +8,14 @@ const logHeaders = (headers: any) => {
         logger.debug(`Header:   ${key}: ${value}`);
     }
 };
-
 const sendDeviceInfoToApi = async (hostId: string, deviceInfo: any) => {
     logger.info(`[AGENT] sendDeviceInfoToApi - To -> ${URL_MASTER}/api/devices/${hostId}`);
 
     await axios.post(`${URL_MASTER}/api/devices/${hostId}`, deviceInfo)
       .then(async response => {
         logger.info("[AGENT] sendDeviceInfoToApi - Success");
-        logger.debug(response.data);
+        logger.info(response.data);
+        logger.debug(response);
       })
       .catch((error) => {
           logger.error(error.message);

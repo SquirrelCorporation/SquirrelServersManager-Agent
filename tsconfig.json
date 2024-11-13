@@ -8,6 +8,11 @@
     "esModuleInterop": true,
     "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "allowJs": true // Add this line to allow JS files
   },
-  "include": ["src//*.ts", "src//*.json", ".env", "typings.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.json", ".env", "typings.d.ts"] // Adjust include pattern for JS files
 }

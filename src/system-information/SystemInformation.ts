@@ -1,6 +1,6 @@
 import cron from 'node-cron';
 import sendDeviceInfoToApi from '../api/device.info';
-import {  STATISTICS_CRON_EXPRESSION } from '../config';
+import { STATISTICS_CRON_EXPRESSION } from '../config';
 import logger from '../logger';
 import getDeviceInfo from '../utils/os.informations';
 

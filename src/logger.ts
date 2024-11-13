@@ -1,7 +1,7 @@
 import winston from 'winston';
+import { LOGS_PATH } from './config';
 import 'winston-daily-rotate-file';
 
-export const LOG_DIRECTORY = (process.cwd() || __dirname) + '/logs';
 
 const transport = new winston.transports.DailyRotateFile({
   level: 'info',
@@ -10,11 +10,11 @@ const transport = new winston.transports.DailyRotateFile({
   zippedArchive: true,
   maxSize: '20m',
   maxFiles: '14d',
-  dirname: LOG_DIRECTORY
+  dirname: LOGS_PATH
 });
 
 const logger = winston.createLogger({
-      level: process.env.NODE_ENV === "development" || process.env.DEBUG  ? "debug" : "info",
+     level: process.env.NODE_ENV === "development" || process.env.DEBUG ? "debug" : "info",
     format: winston.format.combine(
       winston.format.timestamp(), // adds a timestamp property
       winston.format.json()
