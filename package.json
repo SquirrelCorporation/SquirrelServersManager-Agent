@@ -1,6 +1,6 @@
 {
   "name": "agent",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "",
   "main": "build/agent.js",
   "output": "agent.blob",
